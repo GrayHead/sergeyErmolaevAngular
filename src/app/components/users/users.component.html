@@ -1,0 +1,4 @@
+<app-user *ngFor="let u of users" [user]="u"
+          (emitterX)="catchEmitt($event)"></app-user>
+
+<h1>{{user?.id}}- {{user?.username}}</h1>
