@@ -1,6 +1,5 @@
-import {Component} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {User} from '../../models/User';
-import {HttpClient} from '@angular/common/http';
 import {UserService} from '../../services/user.service';
 
 @Component({
@@ -8,18 +7,19 @@ import {UserService} from '../../services/user.service';
   templateUrl: './users.component.html',
   styleUrls: ['./users.component.css']
 })
-export class UsersComponent {
+export class UsersComponent implements OnInit {
 
   users: User[];
-  user: User;
+
 
   constructor(private userService: UserService) {
+  }
+
+
+  // analog comdidmount
+  ngOnInit(): void {
     this.userService.getUsers().subscribe(value => this.users = value);
+
   }
 
-  catchEmitt(o: User): void {
-    this.user = o;
-  }
 }
-
-
