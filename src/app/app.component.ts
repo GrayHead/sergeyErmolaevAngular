@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {NgForm} from '@angular/forms';
+import {AbstractControl, FormBuilder, FormControl, FormGroup, NgForm, Validators} from '@angular/forms';
 import {HttpClient} from '@angular/common/http';
 
 @Component({
@@ -8,6 +8,12 @@ import {HttpClient} from '@angular/common/http';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+
+  // username = new FormControl('default username', [Validators.required, Validators.minLength(10)]);
+  // password = new FormControl('default passwrod', this.customValidator);
+  // myFrom = new FormGroup({username: this.username, password: this.password});
+
+  myFrom: FormGroup;
 
   // user = {id: 1, name: 'vaysa'};
   //
@@ -20,7 +26,12 @@ export class AppComponent {
   id = 0;
 
 
-  constructor(private httpClient: HttpClient) {
+  constructor(private httpClient: HttpClient, private fb: FormBuilder) {
+
+    this.myFrom = this.fb.group({
+      username: ['username', Validators.required],
+      password: ['password']
+    });
   }
 
   select(selectForm: NgForm): void {
@@ -29,4 +40,16 @@ export class AppComponent {
       .subscribe(value => console.log(value));
 
   }
+
+  submitt(): void {
+    console.log(this.myFrom);
+  }
+
+  customValidator(data: AbstractControl): any {
+    console.log(data.value);
+    if (data.value.includes('duck')) {
+      return {duckPresent: {msg: 'change password', status: true}};
+    }
+  }
+
 }

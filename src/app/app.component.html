@@ -1,3 +1,5 @@
+<app-my-pipes></app-my-pipes>
+<hr>
 <ul>
   <li>
     <a [routerLink]="['users']">users</a>
@@ -48,6 +50,13 @@
 </form>
 
 
+<form [formGroup]="myFrom" (ngSubmit)="submitt()">
+  <input type="text" formControlName="username">
+  <div>
+    <input type="text" formControlName="password">
+    <div
+      *ngIf="myFrom.controls.password.errors?.duckPresent.status">{{myFrom.controls.password.errors?.duckPresent?.msg}}</div>
 
-
-
+  </div>
+  <button [disabled]="myFrom.controls.password.errors?.duckPresent.status">save</button>
+</form>
