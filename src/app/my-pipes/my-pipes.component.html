@@ -1,11 +1,15 @@
-<div>
-
+<div appSilver>
+  <!--  {{user.name}} {{user.username}} {{user}}-->
+  <BR>
   {{user | json }}
-  {{user.name | uppercase}}
 
-  {{100 | currency :'EUR'}}
+  <hr>
+  {{date | date : 'short'}}
+  <hr>
+  {{wallet | currency : 'GBP'}}
 
-  <br>
-  {{this.date | date : 'medium' }}
+  <hr>
+
+  {{'hello' | custom : '!' : 3  }}
 
 </div>

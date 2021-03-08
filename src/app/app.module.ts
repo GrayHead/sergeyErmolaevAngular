@@ -6,13 +6,17 @@ import {AppRoutingModule} from './app-routing.module';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {NewFormComponent} from './new-form/new-form.component';
 import {MyPipesComponent} from './my-pipes/my-pipes.component';
+import { CustomPipe } from './my-pipes/custom.pipe';
+import { SilverDirective } from './my-pipes/silver.directive';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     NewFormComponent,
-    MyPipesComponent
+    MyPipesComponent,
+    CustomPipe,
+    SilverDirective
   ],
   imports: [
     BrowserModule,
